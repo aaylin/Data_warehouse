@@ -128,7 +128,7 @@ staging_events_copy = ("""
                                         config.get('IM_ROLE', 'ARN').
                                         config.get('S3', 'LOG_JSONPATH'))
 
-                                       
+
 staging_songs_copy = ("""  COPY staging_songs
                            FROM {}
                            CREDENTIALS 'aws_iam_role={}'
