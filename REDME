@@ -1,0 +1,40 @@
+#Data Warehouse
+Project name "Data Warehouse" in the Udactiy Data Engineer Nanodegree.
+
+#Project Summary
+The purpose of the project is to iplement a Data Warehouse in RedShift2 that the Datas can be analyzed easily and efficiently. Therfore it have to create a ETL pipeline that extracts existing datas from S3 Bucket, states them in Redshift, and transfroms these data into dimensions and fact tabels. 
+
+
+#Project instructions
+1. Setup a redshift cluster on AWS and insert the connection details in dwh.cfg.
+2. Create the needed Tabels for the Datas by executing create_tables.py.
+3. Process the data from the configured S3 data sources by executing etl.py.
+4. Write the readmefile to explain the Project steps.
+
+
+#Description and structior of the created Tables:
+- Staging Tables: 
+stating table for event data
+stating table for song data
+
+
+- Fact and Dimension Tabels:
+songplays (fact table): Inclueds the information about the songs e.g. session
+users     (dimesion table): Inclueds the information about the users e.g. name, gender and level
+songs     (dimesion table): Includes the information about the songs e.g. containing name, artist, year and duration
+artists   (dimesion table): Includes the information about the artist e.g. name and location (geo-coords and textual location)
+time      (dimeison table): Includes the information about the time as timestamps
+
+
+#ETL pipeline
+1. Load the given song and log data from S3 buckets.
+2. Stage the loaded data into the staging tables event data, song data.
+3. Transform the data into the Star schema which are described by the tables above.
+
+#Query Example:
+In the Redshift Query Editor you can find e.g.
+all song Id from certan artists Akercoke 
+- SELECT songs.song_id FROM songs JOIN artists ON songs.artist_id = artists.artist_id WHERE artists.name = 'Akercocke'
+
+or you can give out the the tables e.g. time by limitation of the rows 
+SELECT * FROM time LIMIT 5;
