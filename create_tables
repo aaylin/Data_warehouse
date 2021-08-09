@@ -2,12 +2,18 @@ import configparser
 import psycopg2
 from sql_queries import create_table_queries, drop_table_queries
 
+#   Executes all drop table queries.
+#    cur: database cursor
+#    conn: database connector
 
 def drop_tables(cur, conn):
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
 
+#   Executes all create table queries.
+#    cur: database cursor
+#    conn: database connector        
 
 def create_tables(cur, conn):
     for query in create_table_queries:
