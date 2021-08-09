@@ -2,12 +2,18 @@ import configparser
 import psycopg2
 from sql_queries import copy_table_queries, insert_table_queries
 
+#   Executes loade staging tables queries.
+#    cur: database cursor
+#    conn: database connector
 
 def load_staging_tables(cur, conn):
     for query in copy_table_queries:
         cur.execute(query)
         conn.commit()
 
+#   Executes insert Data in Tabels.
+#    cur: database cursor
+#    conn: database connector
 
 def insert_tables(cur, conn):
     for query in insert_table_queries:
